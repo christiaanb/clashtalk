@@ -1,0 +1,18 @@
+%include polycode.fmt
+
+%subst code a    = "\begin{hscode}\linenumsetup\printlinebegin\SaveRestoreHook'n" a "\printlineend\ColumnHook'n\end{hscode}\resethooks'n"
+%subst newline   = "\printlineend\\'n\printlinebegin"
+%subst blankline = "\printlineend\\[\blanklineskip]%'n\printlinebegin"
+
+%format rec       = "\mathbf{rec}"
+%format proc      = "\mathbf{proc}"
+%format -<        = "\leftY"
+%format >>>       = "\ggg"
+%format ^^^       = "\Uparrow"
+%format (_(a)(b)) = a "_{" b "}"
+%format ^^        = "\;\;"
+%format <=        = "<="
+%format +>        = "\vartriangleright"
+%format +>>       = "\ggg"
+%format _         = "\_"
+%format .         = "."
