@@ -16,7 +16,7 @@
 \DeclareUnicodeCharacter{9733}{\ensuremath{\star}}
 
 % Support for the \leftY symbol
-\usepackage{MnSymbol}
+% \usepackage{MnSymbol}
 
 % Support for graphics
 \usepackage{graphicx}

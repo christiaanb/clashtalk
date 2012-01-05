@@ -242,6 +242,16 @@ Normalization also split in phases:
 \frame
 {
 \frametitle{Making descriptions first-order}
+\only<1>{
+\begin{tabbing}
+$\mathcal{S}_{1}$ \= = \= $\mathcal{E}_{1}$ \\
+$\mathcal{E}_{1}$ \> = \> $\mathit{lam}\ \mathcal{E}_{1}\ ∪\ \mathit{app}\ (\mathcal{E}_{1} - prim)\ \mathcal{E}_{1}\ ∪\ app\ prim\ (\mathcal{F}'_{1} ∩ \mathcal{B}'_{1})\ ∪\ \mathit{con}\ ∪$\\
+                  \>   \> $\mathit{var}\ ∪\ \mathit{prim}\ ∪\ \mathit{let}\ \mathcal{E}_{1}\ \mathcal{E}_{1}\ ∪ \mathit{case}\ \mathcal{F}'_{1}\ \mathcal{E}_{1}$ \\
+$\mathcal{F}'_{n}$ \> = \> $\mathcal{E}_{n} - \mathrm{FUN}\ \mathcal{E}_{n}$ \\
+$\mathcal{B}'_{n}$ \> = \> $\mathcal{E}_{n} - \mathrm{BOX}\ \mathcal{E}_{n}$
+\end{tabbing}
+}
+\only<2>{
 \small{
 \begin{mathpar}
 \inferrule*[right=BetaRed]{(λx.e)\ (u : σ) \\ \mathrm{FUN}(σ) ∨ \mathrm{BOX}(σ)}{e [x:=u]}
@@ -262,6 +272,50 @@ Normalization also split in phases:
 {(y\ \overline{e})\ (u\!:\!σ) \\ \mathrm{FUN}(σ) ∨ \mathrm{BOX}(σ) \\ y ∈ \hat{π}₁(Γ_{g})}
 {y'\ \overline{e}\ \overline{\mathrm{FV}(u)} \\\\ Γ_{g}^{new} = Γ_{g}^{old} ∪ \{(y',λ\overline{x}λ\overline{\mathrm{FV}(u)}.π₂(Γ_{g}@@y)\ \overline{x}\ u)\}}
 \end{mathpar}}
+}
+\only<3>{
+\begin{tabbing}
+$\mathcal{S}_{2}$ \= = \= $\mathcal{E}_{2}$ \\
+$\mathcal{E}_{2}$ \> = \> $lam\ \mathcal{E}_{2}\ ∪\ app\ con\ \mathcal{E}_{2}\ ∪\ app\ \mathcal{E}_{2}\ (\mathcal{F}'_{2} ∩ \mathcal{B}'_{2})\ ∪\ con\ ∪$\\
+                  \>   \> $var\ ∪\ prim\ ∪\ let\ (\mathcal{F}'_{2} ∩ \mathcal{B}'_{2})\ \mathcal{E}_{2}\ ∪\ case\ \mathcal{F}'_{2}\ \mathcal{E}_{2}$
+\end{tabbing}
+}
+\only<4>{
+\small{
+\begin{mathpar}
+\inferrule*[right=CaseCon]
+{\mathbf{case}\ K\ \overline{σ}\ \overline{y} : τ\ \mathbf{of}\ \{...; K\ \overline{x} → e; ...\} \\ \mathrm{BOX}(τ)}
+{\mathbf{let}\ \overline{x = y}\ \mathbf{in}\ e}
+\and
+\inferrule*[right=CaseCase]
+{\mathbf{case}\ (\mathbf{case}\ e\ \mathbf{of}\ \{p₁ → u₁;\ ...;\ p_{n} → u_{n}\} : σ)\ \mathbf{of}\ \overline{alts} \\ \mathrm{BOX}(σ)}
+{\mathbf{case}\ e\ \mathbf{of} \{p₁ → \mathbf{case}\ u₁\ \mathbf{of}\ \overline{alts};\ ...;\ p_{n} → \mathbf{case}\ u_{n}\ \mathbf{of}\ \overline{alts}\}}
+\and
+\inferrule*[right=CaseLet]
+{\mathbf{case}\ (\mathbf{let}\ \overline{binds}\ \mathbf{in}\ e : σ)\ \mathbf{of}\ \overline{alts} \\ \mathrm{BOX}(σ)}
+{\mathbf{let}\ \overline{binds}\ \mathbf{in}\ (\mathbf{case}\ e\ \mathbf{of}\ \overline{alts})}
+\and
+\inferrule*[right=InlineBox]
+{\mathbf{case}\ (y\ \overline{e}):σ\ \mathbf{of}\ \overline{alts} \\\\ \mathrm{BOX}(σ) \\ y ∈ \hat{π}₁(Γ_{g})}
+{\mathbf{case}\ (π₂(Γ_{g}@@y)\ \overline{e})\ \mathbf{of}\ \overline{alts}}
+\end{mathpar}}
+}
+\only<5>{
+\begin{tabbing}
+$\mathcal{S}_{3}$ \= = \= $\mathcal{E}_{3}$ \\
+$\mathcal{E}_{3}$ \> = \> $lam\ \mathcal{E}_{3}\ ∪\ app\ con\ \mathcal{E}_{3}\ ∪\ app\ \mathcal{E}_{3}\ (\mathcal{F}'_{3} ∩ \mathcal{B}'_{3})\ ∪\ con\ ∪$\\
+                  \>   \> $var\ ∪\ prim\ ∪\ let\ (\mathcal{F}'_{3} ∩ \mathcal{B}'_{3})\ \mathcal{E}_{3}\ ∪\ case\ (\mathcal{F}'_{3} ∩ \mathcal{B}'_{3})\ \mathcal{E}_{3}$
+\end{tabbing}
+}
+\only<6>{
+\begin{tabbing}
+$\mathcal{S}_{3}$ \= = \= $\mathcal{E}_{3}$ \\
+$\mathcal{E}_{3}$ \> = \> $lam\ \mathcal{E}_{3}\ ∪\ app\ con\ \mathcal{E}_{3}\ ∪\ app\ \mathcal{E}_{3}\ (\mathcal{F}'_{3} ∩ \mathcal{B}'_{3})\ ∪\ con\ ∪$\\
+                  \>   \> $var\ ∪\ prim\ ∪\ let\ (\mathcal{F}'_{3} ∩ \mathcal{B}'_{3})\ \mathcal{E}_{3}\ ∪\ case\ (\mathcal{F}'_{3} ∩ \mathcal{B}'_{3})\ \mathcal{E}_{3}$ \\
+                  \>   \> \\
+$\mathcal{F}_{p}$ \> = \> $lam\ \mathcal{E}_{3}\ ∪\ app\ \mathcal{E}_{3}\ \_$
+\end{tabbing}
+}
 }
 
 % \frame
