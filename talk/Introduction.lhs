@@ -62,7 +62,7 @@ Will come back on the subject of recursive function definitons
 The CλaSH compiler takes a functional hardware description, and produces a netlist in the form of synthesizable VHDL code.
 
 \smallskip
-Compiler pipeline:
+CλaSH compiler pipeline:
 \begin{itemize}
   \item GHC frontend for: Parsing, Desugaring, and TypeChecking
   \item Normalization
@@ -72,7 +72,7 @@ Compiler pipeline:
 
 \frame{
 \frametitle{Normalization}
-Brings function hierarchy into a desired normal form:
+Brings function hierarchy into a desired `normal' form:
 \begin{itemize}
   \item Completely monomorphic
   \item No higher-order functions
@@ -316,6 +316,48 @@ $\mathcal{E}_{3}$ \> = \> $lam\ \mathcal{E}_{3}\ ∪\ app\ con\ \mathcal{E}_{3}\
 $\mathcal{F}_{p}$ \> = \> $lam\ \mathcal{E}_{3}\ ∪\ app\ \mathcal{E}_{3}\ \_$
 \end{tabbing}
 }
+}
+
+\frame
+{
+\frametitle{Conclusions}
+\begin{itemize}
+  \item All higher-order descriptions can be made first-order, given only minor restrictions on the input.
+  \item Making the entire function hierarchy monomorphic works in a similar way.
+\end{itemize}
+}
+
+\frame
+{
+\frametitle{Future Work: Recursion}
+\only<1->{
+\numbersreset
+\begin{code}
+map :: (a -> b) -> [a] -> [b]
+map f []      = []
+map f (x:xs)  = (f x):(map f xs)
+\end{code}
+}
+\only<2->{
+\begin{code}
+main :: Int8 -> Int8 -> [Int8]
+main a b = map (*2) [a,b]
+\end{code}
+}
+\begin{itemize}
+\item We need to evaluate map based on the structure of its 2nd argument to `unwind' the recursion.
+\pause
+\item Work done by Arjan Boeijink, based on work: Max Bolingbroke and Simon Peyton Jones, Supercompilation by Evaluation.
+\end{itemize}
+}
+
+\frame
+{
+\vspace{2cm}\centerline{\Huge{
+Questions?
+}}
+\vspace{2cm}
+\centerline{http://clash.ewi.utwente.nl}
 }
 
 % \frame
