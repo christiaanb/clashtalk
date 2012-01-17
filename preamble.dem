@@ -14,6 +14,9 @@
 \newcommand\textpi{\ensuremath{\pi}}
 \newcommand\textGamma{\ensuremath{\Gamma}}
 \DeclareUnicodeCharacter{9733}{\ensuremath{\star}}
+\DeclareUnicodeCharacter{12296}{\ensuremath{\langle}}
+\DeclareUnicodeCharacter{12297}{\ensuremath{\rangle}}
+\DeclareUnicodeCharacter{9657}{\ensuremath{\triangleright}}
 
 % Support for the \leftY symbol
 % \usepackage{MnSymbol}

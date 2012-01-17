@@ -5,15 +5,16 @@
 \input{preamble.dem}
 %include clashtalk.fmt
 
-\title{What not to wear to a Hardware Party \\ --- \\ A Mechanized Stylist}
-\author{Christiaan Baaij \& Jan Kuper}
-\date{January 6, 2012}
+\title{The CλaSH Compiler}
+% \author{Christiaan Baaij \& Jan Kuper}
+\date{January 25, 2012}
 
 \begin{document}
 
 \frame{\titlepage}
 
-\includelhs{talk/Introduction}
+\includelhs{talk/HiPEAC2012}
+% \includelhs{talk/Introduction}
 % \includelhs{talk/Examples}
 % \includelhs{talk/Demo}
 % \frame{
