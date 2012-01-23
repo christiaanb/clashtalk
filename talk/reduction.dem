@@ -1,0 +1,44 @@
+\begin{tikzpicture}
+  \tikzstyle{box}=[shape=rectangle,draw,minimum height=4em, minimum width=4em];
+  \tikzstyle{boxs}=[shape=rectangle,draw,minimum height=1.5em, minimum width=4em];
+
+  \draw                     node[boxs] (discr) {$\mathcal{D}$};
+  \draw (discr) ++(7em,0em) node[box] (input) {$\mathcal{I}$};
+  \draw (input) ++(10em,0em) node[box] (contr) {$\mathcal{C}$};
+  \draw (contr) ++(10em,0em) node[box] (resbf) {$\mathcal{R}$};
+  \draw (contr) ++(0em,08em) node[box] (pipel) {$\mathcal{P}$};
+
+  \draw (discr) ++(1.3em, -0.3em) node {$\sigma_\mathcal{D}$};
+  \draw (input) ++(1.3em, -1.5em) node {$\sigma_\mathcal{I}$};
+  \draw (contr) ++(1.3em, -1.5em) node {$\sigma_\mathcal{C}$};
+  \draw (resbf) ++(1.3em, -1.5em) node {$\sigma_\mathcal{R}$};
+  \draw (pipel) ++(1.3em, -1.5em) node {$\sigma_\mathcal{P}$};
+
+  % To input
+%  \draw[->,>=triangle 45] (discr.30)  -- node[near start,above] {$d$} (input.150);
+  \draw[->,>=triangle 45] (discr.east) -- node[below] {$d$}(input.west);
+  \draw[->,>=triangle 45] (contr.210) -- node[below] {$\delta$} (input.-30);
+
+  % To R
+  \draw[->,>=triangle 45] (contr.30) -- node[above] {$r'$} (resbf.150);
+  \draw[->,>=triangle 45] (discr.east) -- ++ (1em,0em) -- ++(0em,-7em) node[below] {}   -| (resbf.240);
+  \draw[->,>=triangle 45] (discr.240) -- ++(0em,-8em) node[below] {$new$} -| (resbf.300);
+  \draw[->,>=triangle 45] (pipel.90) -- ++(0em,2em) node[above] {$\rho$} -| (resbf.90);
+
+  % To C
+  \draw[->,>=triangle 45] (pipel.90) |- ++(-4em,2em) node[above] {} |- (contr.150);
+  \draw[->,>=triangle 45] (resbf.210) -- node[below] {$r$} (contr.-30);
+  \draw[->,>=triangle 45] (input.250) -- ++(0em,-2.5em) -| node[near start, above] {$i_1$}(contr.230);
+  \draw[->,>=triangle 45] (input.230) -- ++(0em,  -4em) -| node[near start, above] {$i_2$}(contr.250);
+
+  % To P
+  \draw[->,>=triangle 45] (contr.60) --  node[right] {$a_2$} (pipel.300);
+  \draw[->,>=triangle 45] (contr.120) -- node[right] {$a_1$} (pipel.240);
+
+  % Global input
+  \draw[->,>=triangle 45] (input.150) ++(-9em,0em) -- node[above] {$x$} (input.150);
+  \draw[->,>=triangle 45] (discr.west) ++(-2em,0em) -- node[below] {$i$} (discr.west);
+
+  % Global output
+  \draw[->,>=triangle 45] (resbf.east) -- node[above] {$y$} ++(3em,0em);
+\end{tikzpicture}

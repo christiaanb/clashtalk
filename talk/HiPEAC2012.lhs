@@ -4,14 +4,14 @@
 {
 \frametitle{CλaSH \& VHDL}
 \only<1>{
-CλaSH:
+\textcolor{red}{CλaSH:}
 \numbersreset
 \begin{code}
 main :: Signed D9 -> Signed D9 -> Signed D9
 main a b = a + b
 \end{code}
 
-VHDL:
+\textcolor{red}{VHDL:}
 \numbersreset
 %format <= = "\Leftarrow"
 %format entity = "\mathbf{entity}"
@@ -35,13 +35,13 @@ end architecture rtl;
 \end{code}
 }
 \only<2>{
-CλaSH:
+\textcolor{red}{CλaSH:}
 \numbersreset
 \begin{code}
 z = multiOp op a b
 \end{code}
 
-VHDL:
+\textcolor{red}{VHDL:}
 \numbersreset
 %{
 %format map = "\mathbf{map}"
@@ -53,7 +53,7 @@ compInst_z : entity multiOp
 }
 
 \only<3>{
-CλaSH:
+\textcolor{red}{CλaSH:}
 \numbersreset
 \begin{code}
 z = case op of
@@ -62,7 +62,7 @@ z = case op of
   MIN   -> a  -  b
 \end{code}
 
-VHDL:
+\textcolor{red}{VHDL:}
 \numbersreset
 %format when = "\mathbf{when}"
 \begin{code}
@@ -104,6 +104,54 @@ CλaSH compiler pipeline:
 }
 
 \frame{
+\frametitle{CλaSH \&Core}
+\only<1>{
+\textcolor{red}{CλaSH:}
+\numbersreset
+\begin{code}
+id :: α -> α
+id a = a
+\end{code}
+\textcolor{red}{Core:}
+\numbersreset
+\begin{code}
+id = Λα.λ(a:α).a
+\end{code}
+}
+\only<2>{
+\textcolor{red}{CλaSH:}
+\numbersreset
+\begin{code}
+op :: Bit -> Bit
+op a = z
+  where
+    z = a `xor` H
+\end{code}
+\textcolor{red}{Core:}
+\numbersreset
+\begin{code}
+op = λ(a:Bit).
+  let z = xor a H
+  in z
+\end{code}
+}
+\only<3>{
+\textcolor{red}{CλaSH:}
+\numbersreset
+\begin{code}
+fst :: (α,β) -> α
+fst (a,b) = a
+\end{code}
+\textcolor{red}{Core:}
+\numbersreset
+\begin{code}
+fst = Λα.Λβ.λ(ds : (,) α β).
+  case ds of ((,) a _) -> a
+\end{code}
+}
+}
+
+\frame{
 \frametitle{Normalization}
 Brings function hierarchy into a desired `normal' form:
 \begin{itemize}
@@ -124,20 +172,20 @@ Brings function hierarchy into a desired `normal' form:
 id :: α -> α
 id a = a
 \end{code}
-\only<2->{
+\onslide<2->{
 \\[0ex]
-How many wires do I need to represent this function?
+\textcolor{red}{How many wires do I need to represent this function?}
 }
-\only<3->{
+\onslide<3->{
 \numbersreset
 \begin{code}
 main :: Bit -> Bit
 main = id
 \end{code}
 }
-\only<4->{
+\onslide<4->{
 \\[0ex]
-We intuitively know how many wires we need for the entire function hierarchy: 1
+\textcolor{red}{We intuitively know how many wires we need for the entire function hierarchy: 1}
 }
 }
 
@@ -149,9 +197,9 @@ id = Λα.λ(a:α).a
 
 main = id Bit
 \end{code}
-\only<2->{
+\onslide<2->{
 \\[0ex]
-Specialize on type:
+\textcolor{red}{Specialize on type:}
 \numbersreset
 \begin{code}
 idBit = (Λα.λ(a:α).a) Bit
@@ -159,9 +207,9 @@ idBit = (Λα.λ(a:α).a) Bit
 main = idBit
 \end{code}
 }
-\only<3->{
+\onslide<3->{
 \\[0ex]
-What the CλaSH code would look like:
+\textcolor{red}{What the CλaSH code would look like:}
 \numbersreset
 \begin{code}
 idBit :: Bit -> Bit
@@ -180,20 +228,20 @@ main = idBit
 uncurry :: (α -> β -> γ) -> (α,β) -> γ
 uncurry f (a,b) = f a b
 \end{code}
-\only<2->{
+\onslide<2->{
 \\[0ex]
-How many wires do I need to represent this function?
+\textcolor{red}{How many wires do I need to represent this function?}
 }
-\only<3->{
+\onslide<3->{
 \numbersreset
 \begin{code}
 main :: (Bit,Bit) -> Bit
 main = uncurry xor
 \end{code}
 }
-\only<4->{
+\onslide<4->{
 \\[0ex]
-We also intuitively know how many wires we need for this entire function hierarchy: 3
+\textcolor{red}{We also intuitively know how many wires we need for this entire function hierarchy: 3}
 }
 }
 
@@ -209,9 +257,9 @@ uncurry = Λα.Λβ.Λγ.λ(f:α -> β -> γ).λ(ds:(,) α β)).
 
 main = uncurry Bit Bit Bit xor
 \end{code}
-\only<2->{
-\\[0ex]
-Specialize on type AND function:
+\onslide<2->{
+\\[-2.5ex]
+\textcolor{red}{Specialize on type AND function:}
 \numbersreset
 \begin{code}
 uncurryXor = (Λα.Λβ.Λγ.λ(f:α -> β -> γ).λ(ds:(,) α β)).
@@ -222,9 +270,9 @@ uncurryXor = (Λα.Λβ.Λγ.λ(f:α -> β -> γ).λ(ds:(,) α β)).
 main = uncurryXor
 \end{code}
 }
-\only<3->{
-\\[-2ex]
-What the CλaSH code would look like:
+\onslide<3->{
+\\[-2.5ex]
+\textcolor{red}{What the CλaSH code would look like:}
 \numbersreset
 \begin{code}
 uncurryXor :: (Bit, Bit) -> Bit
@@ -238,21 +286,22 @@ main = uncorryXor
 \frame
 {
 \frametitle{Monomorphic \& First Order}
-This type of speicialization can make the entire function hierarchy monomorphic and first order, given the following restrictions on the input:
+This type of specialization can make the entire function hierarchy monomorphic and first order, given the following restrictions on the input:
 \begin{itemize}
   \item The \hs{main} function neither receives nor returns functional values
   \item The \hs{main} function is monomorphic
   \item Primitives neither receive nor return functional values
 \end{itemize}
 \bigskip
-Where a functional value is either a value with a function type (e.g.:~\hs{α -> β}) or a `boxed' function type (e.g.: \hs{Maybe (α -> β)})
+Where a functional value is either a value with a function type (e.g.:~\hs{α -> β}) or a `wrapped' function type (e.g.: \hs{Maybe (α -> β)})
 }
 
 \frame
 {
 \frametitle{Term Rewrite System}
 The normalization phase of the compiler behaves like a term rewrite system that exhaustively applies a set of transformations.
-\bigskip
+\bigskip{}
+\onslide<2->{
 Normalization also split in phases:
 \begin{itemize}
   \item Make monomorphic
@@ -260,28 +309,29 @@ Normalization also split in phases:
   \item `Simplify'
 \end{itemize}
 }
+}
 
 \frame
 {
 \frametitle{Future Work: Recursion}
-\only<1->{
+\onslide<1->{
 \numbersreset
 \begin{code}
 vmap :: Natural s => (a -> b) -> Vector s a -> Vector s b
 vmap f 〈〉      = 〈〉
-vmap f (x:xs)  = (f x)▹(map f xs)
+vmap f (x▹xs)  = (f x)▹(vmap f xs)
 \end{code}
 }
-\only<2->{
+\onslide<2->{
 \begin{code}
 main :: (Signed D8) -> (Signed D8) -> Vector D2 (Signed D8)
 main a b = vmap (*2) 〈a,b〉
 \end{code}
 }
+
 \begin{itemize}
-\item We need to evaluate map based on the structure of its 2nd argument to `unwind' the recursion.
-\pause
-\item Work done by Arjan Boeijink, based on work: Max Bolingbroke and Simon Peyton Jones, ``Supercompilation by Evaluation".
+\onslide<3->{\item We need to evaluate map based on the structure of its 2nd argument to `unwind' the recursion.}
+\onslide<4->{\item Work done by Arjan Boeijink, based on work: Max Bolingbroke and Simon Peyton Jones, ``Supercompilation by Evaluation".}
 \end{itemize}
 }
 

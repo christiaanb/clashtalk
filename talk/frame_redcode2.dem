@@ -1,0 +1,18 @@
+\newcommand{\arrline}[3]{\onslide<1,2,3,4>{\alert<2>{(\alert<4>{\sigma'_{\mathcal{#1}}},}}\ &  \!\!\!\!\! \alert<2>{#2}\onslide<1,2,3,4>{\alert<2>{)}} & \alert<2>{\hspace{-7em}=} & \hspace{-4em} \alert<2>{\mathcal{#1}}\ & \hspace{-6.5em}\onslide<1,2,3,4>{\alert<2,3>{\sigma_\mathcal{#1}}}\ & \hspace{-7.5em}\alert<2>{#3}\\}
+
+\[\begin{array}{llclll}
+\multicolumn{4}{l}{\hspace{-1em}reducer\ \alert<3>{\onslide<1,2,3,4>{\sigma_{red}}}\ (x, i) = (\alert<4>{\onslide<1,2,3,4>{\sigma_{red}'}}, y)}\\
+\multicolumn{4}{l}{\hspace{-1em}where}\\
+   \multicolumn{6}{l}{\onslide<1,2,3,4>{\alert<3>{State\ Reducer\ \{...\} = \sigma_{red}}}}\\
+   \arrline{D}{(new, d)}{i}
+   \arrline{I}{(i_1,i_2)}{(x, d, \delta)}
+   \arrline{P}{\rho}{(a_1, a_2)}
+   \arrline{R}{(r, y)}{(new, d, \rho, r')}
+   \arrline{C}{(a_1, a_2, \delta, r')}{(i_1, i_2, \rho, r)}
+   \alert<4>{\onslide<1,2,3,4>{\sigma_{red}'}}			& \alert<4>{\onslide<1,2,3,4>{\hspace{-0.5em}= State\ Reducer\ \{\hspace{-0.8em}}}&\alert<4>{\onslide<1,2,3,4>{\sigma_{D}}} &\alert<4>{\onslide<1,2,3,4>{\hspace{-1em}= \sigma_\mathcal{D}',}
+					   		 \ \onslide<1,2,3,4>{\sigma_\mathcal{I}}} &\alert<4>{\onslide<1,2,3,4>{\hspace{-1em}= \sigma_\mathcal{I}',}}\\
+							   &&\alert<4>{\onslide<1,2,3,4>{\sigma_\mathcal{P}}} &\alert<4>{\onslide<1,2,3,4>{\hspace{-1em}= \sigma_\mathcal{P}',}}
+							 \  \alert<4>{\onslide<1,2,3,4>{\sigma_\mathcal{R}}} &\alert<4>{\onslide<1,2,3,4>{\hspace{-1em}= \sigma_\mathcal{R}',}}\\
+							   &&\alert<4>{\onslide<1,2,3,4>{\sigma_\mathcal{C}}} &\alert<4>{\onslide<1,2,3,4>{\hspace{-1em}= \sigma_\mathcal{C}'\}}}
+\end{array}
+\]

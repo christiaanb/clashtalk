@@ -19,13 +19,20 @@
 \DeclareUnicodeCharacter{9657}{\ensuremath{\triangleright}}
 
 % Support for the \leftY symbol
-% \usepackage{MnSymbol}
+\usepackage{stmaryrd}
 
 % Support for graphics
 \usepackage{graphicx}
 
 % Support for TikZ
 \usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{snakes}
+\usepgflibrary{shapes.geometric}
+\usepgflibrary[shapes.geometric]
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary[shapes.geometric]
+\usetikzlibrary[matrix]
 
 % better spacing management
 \usepackage{microtype}

@@ -6,9 +6,7 @@
 
 %format rec       = "\mathbf{rec}"
 %format proc      = "\mathbf{proc}"
-%format -<        = "\leftY"
 %format >>>       = "\ggg"
-%format ^^^       = "\Uparrow"
 %format (_(a)(b)) = a "_{" b "}"
 %format ^^        = "\;\;"
 %format <=        = "<="
@@ -16,3 +14,4 @@
 %format +>>       = "\ggg"
 %format _         = "\_"
 %format .         = "."
+%format -<   = "\Yleft"
