@@ -12,7 +12,7 @@ mac acc x y = acc + x * y
     \only<2-> {
 \numbersreset
       \begin{code}
-type Int16 = Signed D16
+type Int16 = Signed 16
 mac16 :: Int16 -> Int16 -> Int16 -> Int16
 mac16 = mac
       \end{code}
@@ -52,15 +52,15 @@ macS s (x,y) = (s',s)
 simulate _    _ []      = []
 simulate hw   s (i:is)  = o : (simulate hw s' is)
   where
-    (s',o) = hw s i        
+    (s',o) = hw s i
       \end{code}
     }
     \only<2-> {
       Simulation run of the stateful multiply-accumulate:
 \numbersreset
       \begin{code}
-simulateMac = simulate macS (State 0) 
-  [(2,3),(2,2),(3,7),(4,7)]        
+simulateMac = simulate macS (State 0)
+  [(2,3),(2,2),(3,7),(4,7)]
       \end{code}
     }
     \only<3-> {
@@ -68,7 +68,7 @@ simulateMac = simulate macS (State 0)
 \numbersreset
       \begin{code}
 > simulateMac
-[0,6,10,31]        
+[0,6,10,31]
       \end{code}
     }
 }
@@ -77,14 +77,14 @@ simulateMac = simulate macS (State 0)
 \frame
 {
   \frametitle{map, zipWith and foldl}
-  
+
   \centerline{map f xs}\smallskip
-  \centerline{\includesvg{map}}  
-  
+  \centerline{\includesvg{map}}
+
   \centerline{zipWith f xs ys}\smallskip
   \centerline{\includesvg{zipWith}}
-  
-  
+
+
   \centerline{foldl f z xs}\smallskip
   \centerline{\includesvg{fold}}
 }
@@ -94,7 +94,7 @@ simulateMac = simulate macS (State 0)
     \frametitle{Dot-product}
     \centerline{The dot-product}
     \[
-    \overrightarrow a  \bullet \overrightarrow b  = \sum\nolimits_{i = 0}^{n - 1} {a_i }  \cdot b_i 
+    \overrightarrow a  \bullet \overrightarrow b  = \sum\nolimits_{i = 0}^{n - 1} {a_i }  \cdot b_i
     \]
     \smallskip
     \smallskip
@@ -111,15 +111,15 @@ simulateMac = simulate macS (State 0)
       \numbersreset
       \begin{code}
 e +>> v  = e +> (init v)
-        
+
 fir hs pxs x = (x +>> xs, dotp 0 pxs hs)
       \end{code}
     }
     \only<2-> {
       \numbersreset
       \begin{code}
-type Fir4S = Vector D4 Int16
-        
+type Fir4S = Vector 4 Int16
+
 fir4T :: Fir4S -> Int16 -> (Fir4S, Int16)
 fir4T xs x = (xs', y)
   where
@@ -153,7 +153,7 @@ fir4T xs x = (xs', y)
   \frametitle{Fixed function function units}
   \numbersreset
   \begin{code}
-  fu op inputs (a1, a2) = 
+  fu op inputs (a1, a2) =
     op (inputs!a1) (inputs!a2)
   \end{code}
   \vspace{1cm}
@@ -202,10 +202,10 @@ fir4T xs x = (xs', y)
   \frametitle{The complete CPU}
   \numbersreset
   \begin{code}
-type CpuState = Vector D4 Int16
+type CpuState = Vector 4 Int16
 
 cpuT :: CpuState
-  -> (Int16, Opcode, Vector D4 (Index D7, Index D7))
+  -> (Int16, Opcode, Vector 4 (Index 7, Index 7))
   -> (CpuState, Int16)
 cpuT s (x, opc, addrs) = (s', out)
   where

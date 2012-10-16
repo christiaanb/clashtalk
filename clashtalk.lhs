@@ -5,18 +5,18 @@
 \input{preamble.dem}
 %include clashtalk.fmt
 
-\title{Composition of State}
-\author{The CλaSH Team}
+\title{CλaSH Compiler}
+\author{Christiaan Baaij}
 % \author{Christiaan Baaij \& Jan Kuper}
-\date{January 25, 2012}
+\date{\today}
 
 \begin{document}
 
 \frame{\titlepage}
 
-\includelhs{talk/StateComposition}
+% \includelhs{talk/StateComposition}
 % \includelhs{talk/HiPEAC2012}
-% \includelhs{talk/Introduction}
+\includelhs{talk/Introduction}
 % \includelhs{talk/Examples}
 % \includelhs{talk/Demo}
 % \frame{
@@ -24,7 +24,7 @@
 % Pauze
 % }}
 % }
-% \includelhs{talk/Compiler}
+\includelhs{talk/Compiler}
 % \includelhs{talk/Conclusions}
 
 \end{document}

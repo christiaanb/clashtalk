@@ -6,5 +6,4 @@ paper:
 clean:
 	latexmk -CA
 	rm talk/*.tex
-	rm images/*.pdf
 	rm images/*.pdf_tex

@@ -18,7 +18,7 @@
 \DeclareUnicodeCharacter{12297}{\ensuremath{\rangle}}
 \DeclareUnicodeCharacter{9657}{\ensuremath{\triangleright}}
 
-% Support for the \leftY symbol
+% Support for the \Yleft symbol
 \usepackage{stmaryrd}
 
 % Support for graphics
@@ -100,4 +100,6 @@
  \import{images/}{#1.pdf_tex}%
 }
 
+\usepackage{framed}
+\usepackage{booktabs}
 \usepackage{mathpartir}

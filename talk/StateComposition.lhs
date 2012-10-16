@@ -13,10 +13,10 @@
   Acknowledgements: Work and slides by Marco Gerards
 \end{frame}
 
-\begin{frame}[t]
-\frametitle{Demonstration}
-\input{talk/test.dem}
-\end{frame}
+% \begin{frame}[t]
+% \frametitle{Demonstration}
+% \input{talk/test.dem}
+% \end{frame}
 
 \begin{frame}
   \frametitle{Schematic representation of hardware components}
