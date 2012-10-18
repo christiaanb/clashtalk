@@ -18,6 +18,8 @@
 \DeclareUnicodeCharacter{12297}{\ensuremath{\rangle}}
 \DeclareUnicodeCharacter{9657}{\ensuremath{\triangleright}}
 
+\usepackage{multicol}
+
 % Support for the \Yleft symbol
 \usepackage{stmaryrd}
 
@@ -75,7 +77,8 @@
 \setlength\mathindent{0.5em}
 \numbersright
 
-\newcommand{\clash}{CλaSH}
+\usepackage{xspace}
+\newcommand{\clash}{CλaSH\xspace{}}
 
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{footline}
@@ -94,12 +97,13 @@
 \usepackage{import}
 
 \newcommand{\includesvg}[1]{%
- \executeiffilenewer{images/#1.svg}{images/#1.pdf}%
+ \executeiffilenewer{images/#1.svg}{images/#1.pdf_tex}%
  {/Applications/Inkscape.app/Contents/Resources/bin/inkscape -z --file=images/#1.svg %
  --export-pdf=images/#1.pdf --export-latex}%
  \import{images/}{#1.pdf_tex}%
 }
 
 \usepackage{framed}
-\usepackage{booktabs}
 \usepackage{mathpartir}
+
+\newcommand{\vhdlfont}{\fontsize{6}{8}\selectfont}

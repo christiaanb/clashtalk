@@ -1,5 +1,76 @@
 %include clashtalk.fmt
-\section{Introduction}
+% \section{Introduction}
+
+\frame
+{
+\frametitle{Parallel Functional Programming}
+Functional programming:
+\begin{itemize}
+  \item \emph{Pure} by default, controlled / limited side-effects
+  \item Only \emph{true} data dependencies $\Rightarrow$ easy to parallelize.
+\end{itemize}
+}
+
+\frame
+{
+\frametitle{Back then (80's): Tried, and failed to deliver}
+Context:
+\begin{itemize}
+  \item Uniprocessors were getting faster, quickly
+  \item Compilers were naive
+  \item Parallel Computers were expensive
+\end{itemize}
+
+No thoughts about:
+\begin{itemize}
+    \item Locality
+    \item Exploiting regularity, and
+    \item Granularity
+  \end{itemize}
+}
+
+\frame
+{
+\frametitle{Now: Still trying, and starting to deliver}
+Context:
+\begin{itemize}
+  \item Uniprocessors are stalled
+  \item Compilers are pretty good
+  \item Multi-core is everywhere
+\end{itemize}
+\bigskip
+New techniques:
+\begin{itemize}
+  \item Simple concurrency: Software transactional memory
+  \item Distributed memory (+ Message passing)
+  \item Annotate granularity for data parallelism
+\end{itemize}
+}
+
+\frame
+{
+\frametitle{Annotations for Granularity}
+All current approaches have a recurrent theme:
+\begin{itemize}
+  \item Developer annotates code for granularity and locality
+  \item Purity guarantees safe execution of a parallel program
+\end{itemize}
+}
+
+\frame{
+\frametitle{CλaSH goes a different direction}
+\begin{itemize}
+  \item Do not annotate the code.
+  \item ``Automatic parallelisation'': everything that \emph{can} happen in parallel \emph{will} happen in parallel.
+  \item Bad Idea for multi-core machines
+  \item Good\footnote{But still naive} idea for FPGAs:
+  \begin{itemize}
+    \item Fine-grain parallelism
+    \item Locality of data
+    \item Local memories
+  \end{itemize}
+\end{itemize}
+}
 
 % \frame
 % {
@@ -43,31 +114,34 @@
 % }
 
 
-% \frame{
-% \frametitle{CλaSH}
-% \begin{itemize}
-%   \item \textbf{CλaSH}: CAES Language for Synchronous Hardware
-%   \item A functional hardware description language
-%   \item Supports: Polymorphism, Higher-Order functions, Algebraic Datatypes, Pattern Matching, Type Classes
-% \end{itemize}
-% }
+\frame{
+\frametitle{CλaSH}
+\begin{itemize}
+  \item \textbf{CλaSH}: CAES Language for Synchronous Hardware
+  \item A functional hardware description language
+  \item Supports: Polymorphism, Higher-Order functions, Algebraic Datatypes, Pattern Matching, Type Inference
+  \item The CλaSH compiler takes a functional hardware description, and produces a netlist in the form of synthesizable VHDL code.
+\end{itemize}
+}
 
-% \frame{
-% \frametitle{CλaSH and Haskell}
-% \begin{itemize}
-%   \item Every CλaSH description is a valid Haskell program
-%   \item Not every Haskell program is a valid CλaSH Description:
-%   \begin{itemize}
-%     \item Recursive/Inductive Datatypes
-%     \item Recursive function definitions
-%   \end{itemize}
-% \end{itemize}
+\frame{
+\frametitle{CλaSH and Haskell}
+\begin{itemize}
+  \item Every CλaSH description is a valid Haskell program
+  \item Use Haskell interpreter and compiler for fast simulation
+  \item Not every Haskell program is a valid CλaSH Description:
+  \begin{itemize}
+    \item Recursive/Inductive Datatypes
+    \item Recursive function definitions
+    \item Difficult to imagine hardware for the above
+  \end{itemize}
+\end{itemize}
 % \bigskip
 % \bigskip
 % \only<2>{
 % Compilation issues for a next lecture
 % }
-% }
+}
 
 % \frame
 % {

@@ -1,28 +1,42 @@
 %include clashtalk.fmt
-\section{Conclusions and Future Work}
+% \section{Conclusions and Future Work}
+
+\frame{
+  \frametitle{Work in Progress}
+  \begin{itemize}
+    \item Compile-Time evaluation: support for recursive and generative descriptions (Christiaan Baaij, Arjan Boeijink)
+    \item Being less naive (Rinse Wester):
+    \begin{itemize}
+      \item Annotations for granularity (and locality)
+      \item ``Automatic'' sequentialization based on resource constraints
+    \end{itemize}
+    \item \emph{Modern} Instruction-Set Architecture for Functional Languages (Arjan Boeijink)
+  \end{itemize}
+}
+
 \frame{
   \frametitle{Conclusions}
   \begin{itemize}
     \item Functional languages excel as hardware specification languages.
     \item Higher-order functions and polymorphism are powerful tools:
     	\begin{itemize}
-    		\item Allow for generic, clear, and concise hardware descriptions.
+    		\item Generic, clear, and concise hardware descriptions.
     	\end{itemize}
-    \item Functional language paradigm works well for implementing (hardware) compilers.
+    % \item Functional language paradigm works well for implementing (hardware) compilers.
   \end{itemize}
 }
 
-\frame{
-\frametitle{Future Work}
-\begin{itemize}
-  \item Functional hardware design is an active research topic at the CAES\footnote{CAES: Computer Architecture for Embedded Systems} group:
-  \begin{itemize}
-    \item Bachelor eindopdracht (referaat)
-    \item Ontwerpproject INF/B3
-    \item Master thesis
-  \end{itemize}
-\end{itemize}
-}
+% \frame{
+% \frametitle{Future Work}
+% \begin{itemize}
+%   \item Functional hardware design is an active research topic at the CAES\footnote{CAES: Computer Architecture for Embedded Systems} group:
+%   \begin{itemize}
+%     \item Bachelor eindopdracht (referaat)
+%     \item Ontwerpproject INF/B3
+%     \item Master thesis
+%   \end{itemize}
+% \end{itemize}
+% }
 
 \frame
 {

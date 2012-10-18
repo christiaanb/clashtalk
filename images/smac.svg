@@ -10,7 +10,7 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="143.5"
-   height="67.635742"
+   height="67.835815"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.0 r9654"
@@ -24,7 +24,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="4"
      inkscape:cx="78.995504"
-     inkscape:cy="39.386685"
+     inkscape:cy="39.386654"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -114,7 +114,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-388.48528,-1144.5336)">
+     transform="translate(-388.48528,-1144.3335)">
     <rect
        style="fill:#ffffff;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="rect2925"
@@ -190,36 +190,36 @@
     <text
        xml:space="preserve"
        style="font-size:8px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="445.23257"
-       y="1150.6117"
+       x="453.23257"
+       y="1150.4116"
        id="text3723"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3725"
-         x="445.23257"
-         y="1150.6117">\textbf{macS}</tspan></text>
+         x="453.23257"
+         y="1150.4116">\textbf{mac}</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text3727"
        y="1177.9855"
-       x="424.48126"
+       x="432.48126"
        style="font-size:8px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
        xml:space="preserve"><tspan
          y="1177.9855"
-         x="424.48126"
+         x="432.48126"
          id="tspan3729"
-         sodipodi:role="line">\textbf{mac16}</tspan></text>
+         sodipodi:role="line">\textbf{ma}</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:8px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
        x="464.41705"
-       y="1169.6732"
+       y="1170.973"
        id="text3743"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3745"
          x="464.41705"
-         y="1169.6732">s'</tspan></text>
+         y="1170.973">s'</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text3747"
@@ -235,7 +235,7 @@
        xml:space="preserve"
        style="font-size:8px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
        x="391.23511"
-       y="1170.4231"
+       y="1171.3232"
        id="text3751"
        sodipodi:linespacing="125%"
        inkscape:transform-center-x="-15.75"
@@ -243,15 +243,15 @@
          sodipodi:role="line"
          id="tspan3753"
          x="391.23511"
-         y="1170.4231">y</tspan></text>
+         y="1171.3232">y</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text3755"
-       y="1169.6732"
+       y="1170.973"
        x="508.79489"
        style="font-size:8px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
        xml:space="preserve"><tspan
-         y="1169.6732"
+         y="1170.973"
          x="508.79489"
          id="tspan3757"
          sodipodi:role="line">s</tspan></text>
