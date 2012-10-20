@@ -7,7 +7,7 @@
     \frametitle{Multiply-and-Add}
 \numbersreset
     \begin{code}
-ma x y a = x * y + a
+mulAdd x y a = x * y + a
     \end{code}
 %     \only<2->{
 % \numbersreset
@@ -33,7 +33,7 @@ ma x y a = x * y + a
     \begin{code}
 mac x y = s
   where
-    s'  = ma x y s
+    s'  = mulAdd x y s
     s   = register 0 s'
     \end{code}
     \smallskip
@@ -80,32 +80,30 @@ mac x y = s
 \frametitle{Vectors \& Higher-Order functions}
 \numbersreset
 \begin{code}
-data Vec a
-  =  Nil
-  |  a :> (Vec a)
+data Vec (n :: Nat) a = ...
 \end{code}
 
 \begin{code}
-map :: (a -> b) -> Vec a -> Vec b
-map f Nil      = Nil
-map f (x:>xs)  = (f a) :> (map f xs)
+vmap :: (a -> b) -> Vec n a -> Vec n b
+vmap f Nil      = Nil
+vmap f (x:>xs)  = (f a) :> (map f xs)
 \end{code}
 
-\centerline{\Large{map f xs}}\smallskip
+\centerline{\Large{vmap f xs}}\smallskip
 \centerline{\includesvg{map}}
 }
 
 \frame
 {
-  \frametitle{Other higher-order functions: zipWith \& reduce}
+  \frametitle{Other higher-order functions: vzipWith \& vreduce}
 
-  \centerline{\Large{zipWith f xs ys}}\smallskip
+  \centerline{\Large{vzipWith f xs ys}}\smallskip
   \def\svgwidth{8.5cm}
   \centerline{\includesvg{zipWith}}
 
   \bigskip
 
-  \centerline{\Large{reduce f xs}}\smallskip
+  \centerline{\Large{vreduce f xs}}\smallskip
   \def\svgwidth{8.5cm}
   \centerline{\includesvg{reduce}}
 }
@@ -135,8 +133,8 @@ y_t = \sum\limits_{i=0}^{N-1}{h_{i} \cdot x_{t-i}}
     \smallskip
     \numbersreset
     \begin{code}
-    sum       = reduce (+)
-    as ** bs  = sum (zipWith (*) as bs)
+    sum       = vreduce (+)
+    as ** bs  = sum (vzipWith (*) as bs)
     \end{code}
 }
 
@@ -152,8 +150,15 @@ y_t = \sum\limits_{i=0}^{N-1}{h_{i} \cdot x_{t-i}}
 \begin{center}
 Create a stream using the \hs{rememberN} function:
 \[
-\mathit{remember_{N}}\ x_{t} \Rightarrow [x_{t},x_{t-1},x_{t-2},...,x_{t-N+1}]
+\mathit{remember_{N}}\ x_{t} \Rightarrow\ <\!x_{t},x_{t-1},x_{t-2},...,x_{t-N+1}\!>
 \]
+\numbersreset
+\begin{code}
+rememberN x_t = x_t :> prev
+  where
+    prev = registerP (vcopy def) next
+    next = x_t :> vinit prev
+\end{code}
 \end{center}
 \def\svgwidth{8.5cm}
 \hspace{-0.35cm}\centerline{\includesvg{remembern}}
@@ -179,9 +184,7 @@ fir hs x_t = y_t
     \frametitle{4-Tap FIR filter}
       \numbersreset
       \begin{code}
-fir4 = fir hs
-  where
-    hs = V [2 :: Int16,3,-2,8]
+fir4 = fir <{-"\!"-}2 :: Int16,3,-2,8{-"\!"-}>
       \end{code}
       \def\svgwidth{8.5cm}
     \centerline{\includesvg{4tapfir}}
@@ -193,9 +196,9 @@ fir4 = fir hs
     \frametitle{4-Tap FIR filter}
     \numbersreset
     \begin{code}
-    sum       = reduce (+)
-    as ** bs  = sum (zipWith (*) as bs)
-    fir4 x_t  = V [2 :: Int16,3,-2,8] ** (rememberN x_t)
+    sum        = vreduce (+)
+    as ** bs   = sum (vzipWith (*) as bs)
+    fir4' x_t  = <2 :: Int16,3,-2,8{-"\!"-}> **{-"\ "-}(rememberN x_t)
     \end{code}
     \def\svgwidth{8.5cm}
     \centerline{\includesvg{4tapfir}}
@@ -207,8 +210,8 @@ fir4 = fir hs
 \frametitle{Dot-Product: Generated VHDL}
 \numbersreset
 \begin{code}
-sum       = reduce (+)
-as ** bs  = sum (zipWith (*) as bs)
+sum       = vreduce (+)
+as ** bs  = sum (vzipWith (*) as bs)
 \end{code}
 \hrule
 \begin{multicols}{2}
@@ -254,18 +257,6 @@ end architecture str;
 \begin{frame}[plain]
   \centerline{\includegraphics[width=\paperwidth]{images/fir_rtl_2.png}}
 \end{frame}
-
-\frame
-{
-\frametitle{Not shown today}
-\begin{itemize}
-  \item Self-defined higher-order functions
-  \item Algebraic datatypes
-  \item Pattern-Maching $\Rightarrow$ Control structures
-  \item Type-Classes
-  \item Multi-clock Designs
-\end{itemize}
-}
 
 % \subsection{CPU}
 % \frame

@@ -1,5 +1,17 @@
 %include clashtalk.fmt
 % \section{Conclusions and Future Work}
+\frame
+{
+\frametitle{Not shown today}
+\begin{itemize}
+  \item Self-defined higher-order functions
+  \item Algebraic datatypes
+  \item Pattern-Maching $\Rightarrow$ Control structures
+  \item Type-Classes
+  \item VHDL primitives
+  \item Multi-clock Designs
+\end{itemize}
+}
 
 \frame{
   \frametitle{Work in Progress}

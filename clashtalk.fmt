@@ -10,7 +10,7 @@
 %format (_(a)(b)) = a "_{" b "}"
 %format ^^        = "\;\;"
 %format <=        = "<="
-%format :>        = "\vartriangleright"
+%format :>        = ":"
 %format +>>       = "\gg"
 %format _         = "\_"
 %format .         = "."

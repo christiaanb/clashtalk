@@ -8,6 +8,7 @@ Functional programming:
 \begin{itemize}
   \item \emph{Pure} by default, controlled / limited side-effects
   \item Only \emph{true} data dependencies $\Rightarrow$ easy to parallelize.
+  \item ``Parallel by default''
 \end{itemize}
 }
 
@@ -20,13 +21,15 @@ Context:
   \item Compilers were naive
   \item Parallel Computers were expensive
 \end{itemize}
-
-No thoughts about:
+\bigskip
+No story about:
 \begin{itemize}
     \item Locality
     \item Exploiting regularity, and
     \item Granularity
   \end{itemize}
+\bigskip
+\scriptsize{Acknowledgements: Slide copied from Simon Peyton-Jones}
 }
 
 \frame
@@ -39,12 +42,19 @@ Context:
   \item Multi-core is everywhere
 \end{itemize}
 \bigskip
-New techniques:
+Progress:
 \begin{itemize}
-  \item Simple concurrency: Software transactional memory
-  \item Distributed memory (+ Message passing)
-  \item Annotate granularity for data parallelism
+  \item Explicit threads + Software Transactional Memory
+  \item Distributed memory and processes + Message passing
+  \item Annotations for data parallelism:
+  \begin{itemize}
+    \item Implicit DP: Sparks + Worker threads
+    \item Deterministic DP: Explicit dataflow
+    \item Nested DP: trees, sparse-matrix, etc. $\Rightarrow$ Flatten to SIMD
+  \end{itemize}
 \end{itemize}
+\bigskip
+\scriptsize{Acknowledgements: Slide copied from Simon Peyton-Jones}
 }
 
 \frame
@@ -53,13 +63,14 @@ New techniques:
 All current approaches have a recurrent theme:
 \begin{itemize}
   \item Developer annotates code for granularity and locality
-  \item Purity guarantees safe execution of a parallel program
+  \item Purity and type safety guarantee the safe execution of a parallel program
 \end{itemize}
 }
 
 \frame{
 \frametitle{CλaSH goes a different direction}
 \begin{itemize}
+  \item Focus on implicit data-parallelism.
   \item Do not annotate the code.
   \item ``Automatic parallelisation'': everything that \emph{can} happen in parallel \emph{will} happen in parallel.
   \item Bad Idea for multi-core machines
@@ -119,9 +130,15 @@ All current approaches have a recurrent theme:
 \begin{itemize}
   \item \textbf{CλaSH}: CAES Language for Synchronous Hardware
   \item A functional hardware description language
-  \item Supports: Polymorphism, Higher-Order functions, Algebraic Datatypes, Pattern Matching, Type Inference
+  % \item Supports: Polymorphism, Higher-Order functions, Algebraic Datatypes, Pattern Matching, Type Inference
   \item The CλaSH compiler takes a functional hardware description, and produces a netlist in the form of synthesizable VHDL code.
 \end{itemize}
+}
+
+\frame{
+  \frametitle{Using CλaSH}
+  \def\svgwidth{6cm}
+  $\hskip 0.9cm$\centerline{\includesvg{compilationchain}}
 }
 
 \frame{
